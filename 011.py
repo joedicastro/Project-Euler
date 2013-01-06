@@ -65,7 +65,7 @@ grid = '''
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
 '''
 
-rows = [r.split() for r in grid.split(os.linesep)[1:-1]]
+rows = [r.split() for r in grid.split(os.os.linesep)[1:-1]]
 
 greatest_product = 1
 
