@@ -4,6 +4,7 @@
 """
 Sum square difference
 Problem 6
+http://projecteuler.net/problem=6
 
 The sum of the squares of the first ten natural numbers is,
 12 + 22 + ... + 102 = 385
@@ -19,12 +20,11 @@ natural numbers and the square of the sum.
 """
 
 numbers_up_to = 100
-nut_plus_one = numbers_up_to + 1
 
-sum_of_squares = ((numbers_up_to * nut_plus_one) / 2) ** 2
-square_of_sum = ((2 * numbers_up_to + 1) * nut_plus_one * numbers_up_to) / 6
+sum_of_squares = sum(x ** 2 for x in xrange(1, numbers_up_to + 1))
+square_of_sum = sum(y for y in xrange(1, numbers_up_to + 1)) ** 2
 
-print  sum_of_squares - square_of_sum
+print  square_of_sum - sum_of_squares
 
 ###########################################################################
 #                                 Answer                                  #

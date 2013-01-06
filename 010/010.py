@@ -4,6 +4,7 @@
 """
 Summation of primes
 Problem 10
+http://projecteuler.net/problem=10
 
 The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
 
@@ -11,21 +12,25 @@ Find the sum of all the primes below two million.
 """
 
 
-limit = 2000000
+import math
 
-primes = [True for n in xrange(0, limit)]
-primes[0], primes[1] = False, False  # 0 and 1 are not primes
 
-for i in xrange(1, int(limit ** 0.5)):
-    if primes[i]:
-        for j in xrange(i ** 2, limit, i):
-            primes[j] = False
+def is_prime(number):
+    for n in range(2, int(math.sqrt(number)) + 1):
+        if number % n == 0:
+            return False
+    return True
 
-sum = 0
 
-for x in xrange(0, len(primes)):
-    if primes[x]:
-        sum += x
+i = 1
+# let's assume 2 and 3 as prime numbers by default
+sum = 5
+
+while 6 * i + 1 < 2000000:
+    for x in (6 * i - 1, 6 * i + 1):
+        if is_prime(x):
+            sum += x
+    i += 1
 
 print sum
 

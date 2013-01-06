@@ -2,8 +2,9 @@
 # -*- coding: utf8 -*-
 
 """
-largest palindrome product
+Largest palindrome product
 Problem 4
+http://projecteuler.net/problem=4
 
 A palindromic number reads the same both ways. The largest palindrome made from
 the product of two 2-digit numbers is 9009 = 91 × 99.
@@ -18,23 +19,17 @@ def is_palindrome(number):
         return True
 
 largest = 0
-x = 999
-while x >= 100:
-    y = 999
-    while y >= x:
-        if x % 11 == 0 or y % 11 == 0:
-            if x * y <= largest:
-                break
 
-            if is_palindrome(x * y):
+for x in range(999, 99, -1):
+    for y in range(x, 99, -1):
+        if is_palindrome(x * y):
+            if x * y > largest:
                 largest = x * y
-
-        y -= 1
-    x -= 1
 
 print largest
 
 ###########################################################################
 #                                 Answer                                  #
 ###########################################################################
+
 #  906609

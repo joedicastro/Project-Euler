@@ -4,6 +4,7 @@
 """
 Special Pythagorean triplet
 Problem 9
+http://projecteuler.net/problem=9
 
 A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
 a² + b² = c²
