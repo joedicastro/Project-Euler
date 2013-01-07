@@ -29,9 +29,33 @@ divisors?
 """
 
 
+def num_divisors(num):
+    i = 2
+    limit = num - 1
+    count = 2
+    while i < limit:
+        if num % i == 0:
+            count += 2
+            limit = num / i
+        i += 1
+    return count
+
+
+def triangle_num(pos):
+    return sum(xrange(1, pos + 1))
+
+position = 1
+number_of_divisors = 0
+
+while number_of_divisors < 500:
+    triangle_number = triangle_num(position)
+    number_of_divisors = num_divisors(triangle_number)
+    position += 1
+
+print triangle_number
 
 ###########################################################################
 #                                 Answer                                  #
 ###########################################################################
 
-#
+# 76576500
