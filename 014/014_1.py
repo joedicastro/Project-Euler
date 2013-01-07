@@ -28,20 +28,23 @@ NOTE: Once the chain starts the terms are allowed to go above one million.
 """
 
 
-def collatz_sequence(i):
-    yield i
-    while i > 1:
-        i = i / 2 if i % 2 == 0 else 3 * i + 1
-        yield i
+longest, start = 1, 1
+previous = {}
 
-longest_chain = []
+for i in xrange(1, 1000000):
+    count = 1
+    j = i
+    while j > 1:
+        if j in previous:
+            count += previous[j]
+            break
+        j = j / 2 if j % 2 == 0 else 3 * j + 1
+        count += 1
+    if count > longest:
+        longest, start = count, i
+    previous[i] = count
 
-for i in xrange(1000000, 1, -1):
-    sequence = list(collatz_sequence(i))
-    if len(sequence) > len(longest_chain):
-        longest_chain = sequence
-
-print longest_chain[0]
+print start
 
 ###########################################################################
 #                                  Answer                                 #
