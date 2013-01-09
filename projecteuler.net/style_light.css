@@ -1,0 +1,79 @@
+@media screen {
+   .print {
+      display:none;
+   }
+   body {
+      background-color:#fff;
+      color: #000;
+   }
+   .problem_content {
+      background-color:#fff;
+   }
+   #container {
+      padding-top: 60px;
+   }
+
+   h1,h3,h4 {
+      color: #666;
+   }
+   h2 {
+      color: #6b4e3d;
+   }
+   a {
+      color: #777;
+   }
+   a:hover {
+      color: #aaa;
+   }
+
+   #message {
+      background-color: #f9f9f9;
+      color: #FF6600;
+   }
+   #message a {
+      color: #FF6600;
+   }
+   #footer a {
+      color: #bbb;
+   }
+   .banner {
+      color: #623100;
+   }
+   .banner sub {
+      color: #ccc;
+   }
+   .grid th {
+      color: #666;
+      background-color: #eee;
+   }
+   .grid td {
+      background-color: #fff;
+   }
+   .form_box {
+      background-color: #ffefbd;
+   }
+   .news {
+      background-color:#ffe;
+   }
+   .forum_table {
+      background-color: #fff;
+   }
+   .forum_message {
+      color: #000;
+   }
+   .forum_info {
+      background-color:#f7efde;
+      color: #000;
+   }
+   .forum_quote {
+      background:#ffffea;
+   }
+   .code_box {
+      background-color: #fff;
+   }
+   .code_click {
+      color: #444;
+      background-color: #f5f5f5;
+   }
+
+}
