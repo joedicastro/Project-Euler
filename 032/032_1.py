@@ -20,18 +20,23 @@ HINT: Some products can be obtained in more than one way so be sure to only
 include it once in your sum.
 """
 
-# 987 x 98 = 96726 a total of ten digits, so there are no reason to search more
-# far than 9876, the biggest 4-digit number possible to form part of the
-# 1→9-pandigital multiplicand/multiplier/product identity
-numbers_to_check = [i for i in xrange(1, 9877) if '0' not in str(i)]
+# 987 x 65 = 64155 a 5-digit product for a total of ten digits, so there are no
+# reason to search a product more far than 9876, the biggest 4-digit number
+# possible to form part of the 1→9-pandigital multiplicand/multiplier/product
+# identity.
+# At the same time, 9876 / 2 = 4938, so it's no necessary at all
+# search for a multiplicand or multiplier bigger than that. In fact, in this
+# case, to make a proper pandigital number, you have to rule out the digits
+# already employed, so 4531 is the biggest aproximation.
+numbers_to_check = [i for i in xrange(1, 4532) if '0' not in str(i)]
 products = []
 
 for i in numbers_to_check:
     for j in numbers_to_check:
-        if not i % j:
-            if len(set('{0}{1}{2}'.format(i, j, (i / j)))) == 9:
-                if i not in products and (i / j) in numbers_to_check:
-                    products.append(i)
+        if i * j <= 9876 and '0' not in str(i * j):
+            if len(set('{0}{1}{2}'.format(i, j, (i * j)))) == 9:
+                if i * j not in products:
+                    products.append(i * j)
 
 print sum(products)
 

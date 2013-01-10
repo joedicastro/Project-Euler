@@ -25,7 +25,7 @@ the following:
 Find the sum of all 0 to 9 pandigital numbers with this property.
 """
 
-
+# That's awful, but more faster than 043.py
 import itertools
 
 sum = 0
@@ -33,13 +33,14 @@ sum = 0
 for i in itertools.permutations(xrange(0, 10)):
     if i[0] != 0:
         number = ''.join(str(j) for j in i)
-        property = True
-        for j, k in zip(xrange(1, 8), (2, 3, 5, 7, 11, 13, 17)):
-            if int(number[j:j + 3]) % k != 0:
-                property = False
-                break
-        if property:
-            sum += int(number)
+        if int(number[1:4]) % 2 == 0:
+            if int(number[2:5]) % 3 == 0:
+                if int(number[3:6]) % 5 == 0:
+                    if int(number[4:7]) % 7 == 0:
+                        if int(number[5:8]) % 11 == 0:
+                            if int(number[6:9]) % 13 == 0:
+                                if int(number[7:]) % 17 == 0:
+                                    sum += int(number)
 
 print sum
 
