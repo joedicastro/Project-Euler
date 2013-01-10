@@ -15,7 +15,7 @@ numbers from 1 to 20?
 
 
 def evenly_divisible_by(number, from_1_to):
-    for num in range(from_1_to - 1, 1, -1):
+    for num in xrange(from_1_to - 1, 1, -1):
         if number % num != 0:
             return False
     return True

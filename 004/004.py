@@ -20,8 +20,8 @@ def is_palindrome(number):
 
 largest = 0
 
-for x in range(999, 99, -1):
-    for y in range(x, 99, -1):
+for x in xrange(999, 99, -1):
+    for y in xrange(x, 99, -1):
         if is_palindrome(x * y):
             if x * y > largest:
                 largest = x * y

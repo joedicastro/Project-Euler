@@ -56,7 +56,7 @@ number = """
 
 
 print max(reduce(lambda x, y: int(x) * int(y), number[i:i + 5])
-          for i in range(0, len(number) - 4))
+          for i in xrange(0, len(number) - 4))
 
 
 ###########################################################################

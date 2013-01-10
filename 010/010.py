@@ -16,7 +16,7 @@ import math
 
 
 def is_prime(number):
-    for n in range(2, int(math.sqrt(number)) + 1):
+    for n in xrange(2, int(math.sqrt(number)) + 1):
         if number % n == 0:
             return False
     return True
