@@ -24,7 +24,10 @@ def sum_divisors(num):
     total = 1
     while i < limit:
         if num % i == 0:
-            total += i + num / i
+            if limit == int(limit):
+                total += i
+            else:
+                total += i + num / i
         i += 1
     return total
 

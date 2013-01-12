@@ -6,7 +6,6 @@ Non-abundant sums
 Problem 23
 http://projecteuler.net/problem=23
 
-
 A perfect number is a number for which the sum of its proper divisors is
 exactly equal to the number. For example, the sum of the proper divisors of 28
 would be 1 + 2 + 4 + 7 + 14 = 28, which means that 28 is a perfect number.
@@ -26,9 +25,40 @@ Find the sum of all the positive integers which cannot be written as the sum of
 two abundant numbers.
 """
 
+from math import sqrt
+
+
+def sum_divisors(num):
+    limit = sqrt(num)
+    total = 1
+    for i in xrange(2, int(limit) + 1):
+        if num % i == 0:
+            if i == limit:
+                total += i
+            else:
+                total += i + num / i
+    return total
+
+
+limit = 28123
+abundant_numbers = set()
+sum_of_non_abundant = 0
+
+for j in xrange(1, limit):
+    if sum_divisors(j) > j:
+        abundant_numbers.add(j)
+    condition = True
+    for x in abundant_numbers:
+        if (j - x) in abundant_numbers:
+            condition = False
+            break
+    if condition:
+        sum_of_non_abundant += j
+
+print sum_of_non_abundant
 
 ###########################################################################
 #                                  Answer                                 #
 ###########################################################################
 
-#
+# 4179871
