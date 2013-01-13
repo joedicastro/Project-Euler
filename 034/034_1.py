@@ -41,8 +41,17 @@ def factorial(n):
 factorials = [factorial(n) for n in xrange(10)]
 
 total = 0
-for i in xrange(3, 2540160):
-    if i == sum(factorials[int(d)] for d in str(i)):
+cache = [1, 1, 2]
+for i in xrange(3, 10000):
+    subtotal = sum(factorials[int(d)] for d in str(i))
+    cache.append(subtotal)
+    if i == subtotal:
+        total += i
+
+for i in xrange(10000, 2540160):
+    left, right = i // 10000, i % 10000
+    zeros = (len(str(i)) - len('{0}{1}'.format(left, right)))
+    if i == cache[left] + cache[right] + zeros:
         total += i
 
 print total
