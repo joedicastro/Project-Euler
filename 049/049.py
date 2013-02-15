@@ -28,7 +28,7 @@ limit = 10000
 primes = [True for n in xrange(0, limit)]
 primes[0], primes[1] = False, False  # 0 and 1 are not primes
 
-for i in xrange(1, int(limit ** 0.5)):
+for i in xrange(1, int(limit ** 0.5 + 1)):
     if primes[i]:
         for j in xrange(i ** 2, limit, i):
             primes[j] = False

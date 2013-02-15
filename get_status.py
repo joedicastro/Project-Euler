@@ -14,6 +14,7 @@ current_path = os.getcwd()
 dirs = glob.glob('???')
 
 with open('status.md', 'w') as output:
+    output.write('')
     for d in sorted(dirs):
         output.write('\n Problem {0}\n'.format(d))
         output.write('-------------\n\n')
@@ -22,7 +23,7 @@ with open('status.md', 'w') as output:
         for script in sorted(scripts):
             solved = False
             start_time = time.time()
-            if subprocess.check_output('python {0}'.format(script).split()):
+            if subprocess.check_output('python2 {0}'.format(script).split()):
                 stop_time = time.time()
                 solved = True
             if solved:
