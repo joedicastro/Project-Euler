@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # -*- coding: utf8 -*-
 
 """
@@ -28,7 +28,7 @@ for i in titles:
 
     if not os.path.exists(problem_file):
         out = ''
-        out += '#!/usr/bin/env python' + os.linesep
+        out += '#!/usr/bin/env python2' + os.linesep
         out += '# -*- coding: utf8 -*-' + os.linesep * 2
         out += '"""' + os.linesep
         out += title[1:] + os.linesep
