@@ -1,0 +1,376 @@
+@media print {
+   body {
+      background-color:#fff;
+   }
+   .noprint {
+      display:none;
+   }
+   .collapsable {
+      display: block;
+   }
+
+}
+
+@media screen {
+   .print {
+      display:none;
+   }
+   .problem_content {
+      font-size: 110%;
+      border-top:solid 1px #ddd;
+      border-bottom:solid 1px #aaa;
+      border-left:solid 1px #ddd;
+      border-right:solid 1px #aaa;
+      padding:10px;
+   }
+   #container {
+      padding-top: 60px;
+   }
+   #content {
+      margin: 40px auto;
+      max-width: 1000px;
+   }
+}
+
+body {
+   padding: 0;
+   margin: 0;
+   border-width: 0;
+   font: 90% "Trebuchet MS", sans-serif;
+   min-height: 800px;
+}
+
+img {
+   border:0;
+   vertical-align: middle;
+}
+
+pre {
+   white-space: pre-wrap;       /* css-3 */
+   white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+   white-space: -pre-wrap;      /* Opera 4-6 */
+   white-space: -o-pre-wrap;    /* Opera 7 */
+   word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+
+h1,h2,h3,h4 {
+   margin: 0;
+   font-family: Arial,helvetic,sans-serif;
+}
+
+h2 {
+   padding: 10px 0 5px 0;
+}
+
+h3,h4 {
+   font-family: "Courier New", monospace;
+}
+
+a {
+   text-decoration: none;
+}
+
+input[type="radio"] {
+   vertical-align:middle;
+   margin:0 0 2px 2px;
+   padding:0;
+}
+
+.info {
+	position: relative;
+   cursor: help;
+}
+.info span {
+	display: none;
+	position: absolute;
+   font-weight:normal;
+	font-style:normal;
+	top: 30px;
+	padding: 5px;
+	z-index: 100;
+	background-color: #eee;
+	border: 2px solid #666;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+.info:hover {
+	font-size: 100%; /* this is just for IE */
+}
+.info:hover span {
+	display: block;
+}
+
+#message {
+   background-color: #f9f9f9;
+   color: #ff6600;
+   text-align: center;
+   font-weight: bold;
+   border-bottom: 1px solid #ccc;
+   margin-bottom: 10px;
+   line-height: 2em;
+}
+#message a {
+   color: #ff6600;
+}
+
+#container {
+   position: relative;
+   margin-top: 10px;
+}
+
+#logo {
+   position: absolute;
+   top: 0;
+   left: 11px;
+   width: 200px;
+   margin-right: 20px;
+}
+#logo img {
+   vertical-align:top;
+}
+
+#footer {
+   margin-top: 50px;
+   text-align:center;
+   padding:20px;
+   font:11px Verdana,sans-serif;
+}
+
+#content {
+   padding: 10px;
+}
+
+.banner {
+   margin-top: 30px;
+   font: 200% "Arial Black",arial,sans-serif;
+   font-weight: bold;
+   margin-bottom: 20px;
+   margin-left: -20px;
+   letter-spacing: -1px;
+}
+.banner sub {
+   font-family: "Courier New",arial,sans-serif;
+}
+
+#info_panel {
+   position:absolute;
+   right:10px;
+   top:30px;
+   text-align:right;
+   color:#999;
+   font: 80% Tahoma, Arial, sans-serif;
+}
+
+#nav {
+   position: absolute;
+   top: 0;
+   right: 0;
+   padding: 0;
+   font: 80% Tahoma, Arial, sans-serif;
+   margin-bottom: 10px;
+}
+
+#nav ul {
+   list-style: none;
+   margin:0;
+}
+
+#nav li {
+   width: 70px;
+   background-color:#888;
+   display:block;
+   float:left;
+   margin-right:7px;
+   border:1px solid #777;
+}
+
+#nav a {
+   color:#fff;
+   display:block;
+   font-weight:bold;
+   padding:5px;
+   text-decoration:none;
+}
+
+#nav li:hover {
+   background-color:#ff9933;
+}
+
+#nav #current a {
+   background-color:#ff9933;
+}
+
+var {
+  font-family: times new roman;
+  font-style: italic;
+  font-size: 120%;
+}
+
+dfn {
+   border-bottom: 1px dotted green;
+   font-style: normal;
+}
+
+.hidden {
+    position: absolute;
+    left: -999em;
+    width: 1em;
+    overflow: hidden;
+}
+
+.formula table {
+   border-collapse: collapse;
+   margin: 0 5px;
+}
+.formula .frac td {
+   padding: 0 5px;
+   text-align: center;
+}
+.overline {
+   border-top: 1px solid #000;
+}
+
+.grid {
+  border-collapse: collapse;
+}
+
+.grid th {
+   text-align: center;
+   font-weight: bold;
+}
+
+.grid td, .grid th {
+   padding: 2px;
+   border: 1px solid #bbb;
+}
+
+
+.no_border {
+   border-collapse: collapse;
+}
+
+.no_border td {
+   padding: 1px;
+   border: none;
+}
+
+.form_box {
+   border: 1px solid #bbb;
+   padding: 10px;
+   border-radius: 5px;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+}
+
+.custom_tags {
+  border-collapse: collapse;
+}
+
+.custom_tags td, .custom_tags th {
+   padding: 2px;
+   border: 1px solid #bbb;
+}
+
+.forum_table {
+   border-collapse:collapse;
+   border:1px solid #ddd;
+}
+.forum_table td {
+   padding: 5px;
+}
+
+.forum_message {
+   padding: 5px;
+   font-family: "Consolas", "Lucida Console", "Monaco", "Courier New", Courier, monospace;
+   font-size: 1.1em;
+   width:820px;
+   vertical-align: top;
+   white-space: pre-wrap;       /* css-3 */
+   white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+   white-space: -pre-wrap;      /* Opera 4-6 */
+   white-space: -o-pre-wrap;    /* Opera 7 */
+   word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+.forum_info {
+   vertical-align:top;
+   border-right:1px solid #ddd;
+   width: 180px;
+}
+.forum_quote {
+   padding:.5em;
+   border:1px solid #999;
+}
+
+.code_box pre {
+   margin: 0;
+}
+
+.code_box {
+   border: 1px solid #bbb;
+/*   border-top: none; */
+   margin: 0 10px;
+   margin-top: -1px;
+   display: none;
+}
+.code_click {
+   margin: 10px;
+   margin-bottom: 0;
+   border: 1px solid #bbb;
+   text-align: right;
+   font-family: Tahoma, Arial, sans-serif;
+   font-size: 85%;
+   font-weight: bold;
+   cursor: pointer;
+   background-color: #eee;
+}
+.code_click table {
+   width: 100%;
+   padding:0;
+   margin:0;
+   border-collapse:collapse;
+}
+
+.news {
+   border:1px solid #ccc;
+   padding:10px;
+   margin-bottom:10px;
+}
+
+/* Pagination
+---------------------------------------- */
+.pagination {
+   font-family: Tahoma, Arial, sans-serif;
+   font-size: 80%;
+	height: 1%; /* IE tweak (holly hack) */
+   text-align: center;
+}
+
+.pagination a, .pagination a:link, .pagination a:visited, .pagination a:active {
+   display: block;
+   float: left;
+   font-weight:bold;
+	text-decoration: none;
+	color: #fff;
+	margin: 0 5px 0 0;
+	padding: 2px;
+   padding: 0.5em;
+	background-color: #888;
+	border: 1px solid #777;
+}
+
+.pagination a.current {
+   background-color: #f93;
+   font-weight: bold;
+}
+
+.pagination a:hover {
+	background-color: #f93;
+	color: #fff;
+}
+
+.pagination span {
+   float: left;
+   font-weight: bold;
+}
