@@ -54,10 +54,3 @@ for key in permutations:
         print('The answer: {0}\nThe key: {1}\nThe message:\n\n{2}'.
               format(sum(ord(c) for c in message), ''.join(key), message))
         break
-
-
-###########################################################################
-#                                  Answer                                 #
-###########################################################################
-
-# 107359

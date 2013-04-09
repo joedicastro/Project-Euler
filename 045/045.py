@@ -27,9 +27,3 @@ pentagonal = {i * (3 * i - 1) / 2 for i in xrange(2, limit)}
 hexagonal = {i * (2 * i - 1) for i in xrange(2, limit)}
 
 print list(pentagonal.intersection(hexagonal, triangle))[1]
-
-###########################################################################
-#                                  Answer                                 #
-###########################################################################
-
-# 1533776805

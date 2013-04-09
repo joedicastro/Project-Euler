@@ -33,9 +33,3 @@ words = sorted(open('words.txt', 'rb').read().replace('"', '').split(','))
 
 print sum(1 for word in words if
           sum(letters.index(char) + 1 for char in word) in triangle_numbers)
-
-###########################################################################
-#                                  Answer                                 #
-###########################################################################
-
-# 162

@@ -26,9 +26,3 @@ sum_of_squares = ((numbers_up_to * nut_plus_one) / 2) ** 2
 square_of_sum = ((2 * numbers_up_to + 1) * nut_plus_one * numbers_up_to) / 6
 
 print  sum_of_squares - square_of_sum
-
-###########################################################################
-#                                 Answer                                  #
-###########################################################################
-
-# 25164150

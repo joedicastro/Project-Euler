@@ -25,9 +25,3 @@ sum_of_squares = sum(x ** 2 for x in xrange(1, numbers_up_to + 1))
 square_of_sum = sum(y for y in xrange(1, numbers_up_to + 1)) ** 2
 
 print  square_of_sum - sum_of_squares
-
-###########################################################################
-#                                 Answer                                  #
-###########################################################################
-
-# 25164150

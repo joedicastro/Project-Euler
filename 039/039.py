@@ -33,9 +33,3 @@ for solution in solutions:
         maximun, perimeter = len(solutions[solution]), solution
 
 print 'The perimeter is {0} with {1} solutions.'.format(perimeter, maximun)
-
-###########################################################################
-#                                  Answer                                 #
-###########################################################################
-
-# 840

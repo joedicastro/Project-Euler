@@ -20,9 +20,3 @@ What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5,
 from itertools import permutations
 
 print ''.join([str(i) for i in list(permutations(xrange(0, 10)))[999999]])
-
-###########################################################################
-#                                  Answer                                 #
-###########################################################################
-
-#
