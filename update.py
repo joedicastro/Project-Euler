@@ -5,6 +5,7 @@
 Generate the python files for the problems from ProjectEuler.net
 """
 
+import json
 import os
 from collections import defaultdict
 from itertools import izip
@@ -25,8 +26,8 @@ except ImportError:
     GHOST = False
 
 
-def get_data(title, content, url_base, root_path):
-    """@todo: docstring for get_data
+def get_problem_data(title, content, url_base, root_path):
+    """@todo: docstring for get_problem_data
 
     :title: @todo
     :content: @todo
@@ -82,7 +83,7 @@ def get_problem_content(problem, url):
                    'b': u'ᵇ',
                    'c': u'ᶜ',
                    'd': u'ᵈ',
-                   'elm': u'ᵉ',
+                   'e': u'ᵉ',
                    'f': u'ᶠ',
                    'g': u'ᶠ',
                    'h': u'ʰ',
@@ -119,7 +120,7 @@ def get_problem_content(problem, url):
                  'b': u'_b',
                  'c': u'_c',
                  'd': u'_d',
-                 'elm': u'ₑ',
+                 'e': u'ₑ',
                  'f': u'_f',
                  'g': u'_g',
                  'h': u'ₕ',
@@ -207,40 +208,38 @@ def get_processor():
     return processor.replace('(R)', '').replace('(TM)', '')
 
 
-def get_git_files_et_dirs(repository):
-    """Get a list of files & directories under a git repository.
+def get_git_files(repository, staged=False):
+    """Get a list of files under a git repository.
 
     :repository: the git repository
-    :returns: the directories and files under git control
+    :staged: if false return all files, else return only the staged ones
+    :returns: the files under git control
 
     """
-    # get the files under git control
     os.chdir(repository)
-    # alternate command in git `git ls-tree --full-tree -r HEAD --name-only`
-    git_command = "git ls-files".split()
-    git_out = check_output(git_command).split(os.linesep)
-    files = [os.path.join(repository, line) for line in git_out if line]
+    if staged:
+        git_command = "git diff --cached --name-only".split()
+    else:
+        git_command = "git ls-files".split()
+    git_output = check_output(git_command).split(os.linesep)
+    files = [os.path.join(repository, line) for line in git_output if line]
 
-    # get the directories for these files
-    dirs = []
-    for filename in files:
-        parent_dir = os.path.dirname(filename)
-        if parent_dir not in dirs:
-            dirs.append(parent_dir)
-
-    return files, dirs
+    return files
 
 
-def python_files_per_dir(path, dirs, files):
+def scripts_per_problem(files):
     """@todo: Docstring for get_python_files_under_git
 
     :arg1: @todo
     :returns: @todo
 
     """
-    if path in dirs:
-        return (f for f in files if os.path.dirname(f) == path and
-                os.path.splitext(f)[-1] == '.py')
+    scripts = defaultdict(list)
+    for fil in files:
+        if os.path.splitext(fil)[-1] == '.py':
+            key = os.path.basename(os.path.dirname(fil))
+            scripts[key].append(fil)
+    return scripts
 
 
 def write_readme(path, results):
@@ -261,9 +260,11 @@ def write_readme(path, results):
             if results[result]:
                 readme.write('\n Problem {0}\n'.format(result))
                 readme.write('-------------\n\n')
-                for tim in sorted(results[result], key=lambda x: x['script']):
+                for sol in sorted(results[result].keys()):
                     readme.write('    {0:12} {1:.3f}s\n'.
-                                 format(tim['script'], tim['time']))
+                                 format(sol, results[result][sol]))
+
+    # FIXME: get the number of solved problems and total
 
 
 def clean_element(element):
@@ -285,7 +286,7 @@ def get_element_et_links(url):
     :returns: the cleaned lxml element and all the webpage links
 
     """
-    # GHOST = False  # Uncomment to debug TODO: delete this line
+    GHOST = False  # Uncomment to debug TODO: delete this line
 
     if GHOST:
         ghost_object = ghost.Ghost(wait_timeout=120)
@@ -319,19 +320,6 @@ def get_time(script, problem_dir):
     return stop_time - start_time
 
 
-def get_problem_times(scripts, times, data):
-    """@todo: Docstring for get_problem_times
-
-    :scripts: @todo
-    :times: @todo
-
-    """
-    for script in scripts:
-        total = get_time(script, data['dir'])
-        key = data['number']
-        times[key].append({'script': os.path.basename(script), 'time': total})
-
-
 def get_web_content(element):
     """@todo: Docstring for get_web_content
 
@@ -356,37 +344,84 @@ def download_aux_files(data):
             urlretrieve(fil, filename)
 
 
+def read_json(json_file):
+    """@todo: Docstring for read_symlinks
+
+    :json_file: @todo
+    :returns: @todo
+
+    """
+    with open(json_file, 'r') as json_in:
+        jjson = json.load(json_in)
+    return jjson
+
+
+def store_json(times, json_file):
+    """@todo: Docstring for store_symlinks
+
+    :symbolic_links: store the symbolic links into a json file
+
+    """
+    with open(json_file, 'w') as json_out:
+        json.dump(times, json_out, indent=4)
+
+
 def main():
     """The main function."""
     curr_path = os.getcwd()
+    json_times = os.path.join(curr_path, 'times.json')
 
     domain = 'http://projecteuler.net/'
     url = domain + 'show=unsolved'
 
     element, links = get_element_et_links(url)
 
-    times = defaultdict(list)
+    if os.path.exists(json_times):
+        times = read_json(json_times)
+    else:
+        times = defaultdict(dir)
+
     changes = False
 
-    git_files, git_dirs = get_git_files_et_dirs(curr_path)
+    git_files = scripts_per_problem(get_git_files(curr_path))
+    git_staged = scripts_per_problem(get_git_files(curr_path, True))
 
     for title, content in get_web_content(element):
-        data = get_data(title, content, domain, curr_path)
+        problem_data = get_problem_data(title, content, domain, curr_path)
 
-        if not os.path.exists(data['dir']):
+        if not os.path.exists(problem_data['dir']):
             changes = True
-            os.mkdir(data['dir'])
+            os.mkdir(problem_data['dir'])
         else:
-            scripts = python_files_per_dir(data['dir'], git_dirs, git_files)
-            if scripts:
-                get_problem_times(scripts, times, data)
+            key = problem_data['number']
+            for script in git_files[problem_data['number']]:
+                s_name = os.path.basename(script)
+                if not times.get(problem_data['number'], {}):
+                    total = get_time(script, problem_data['dir'])
+                    times[key] = {s_name: total}
+                if not times.get(problem_data['number'], {}).get(s_name):
+                    total = get_time(script, problem_data['dir'])
+                    times[key][s_name] = total
 
-        if not os.path.exists(data['file']):
-            with open(data['file'], 'w') as output:
-                output.write(data['text'].encode('utf-8'))
+            for script in git_staged[problem_data['number']]:
+                s_name = os.path.basename(script)
+                if not times.get(problem_data['number'], {}):
+                    total = get_time(script, problem_data['dir'])
+                    times[key] = {s_name: total}
+                elif not times.get(problem_data['number'], {}).get(s_name):
+                    total = get_time(script, problem_data['dir'])
+                    times[key][s_name] = total
+                else:
+                    total = get_time(script, problem_data['dir'])
+                    times[key][s_name] = total
 
-            download_aux_files(data)
+        if not os.path.exists(problem_data['file']):
+            with open(problem_data['file'], 'w') as output:
+                output.write(problem_data['text'].encode('utf-8'))
 
+            download_aux_files(problem_data)
+
+    store_json(times, json_times)
     write_readme(curr_path, times)
 
     if changes:
