@@ -460,18 +460,17 @@ def write_readme(curr_path, times, total):
     - `README.md`: this document
     - `times.json`: the time taken to solve each script stored in json format
     - `update.py`: an utility script to automatize some tasks:
-        - Downloads an off-line copy of the Project Euler's website with all
-          the problems in a single page.
-        - Creates this document automatically, computing the solved problems to
-          know the time consumed by each solution.
-        - Creates a new dir locally for each problem (new problems also),
-          downloads automatically all the necessary auxiliary files and create
-          a new python file with the problem's formulation as the document
-          string.
+       - Downloads an off-line copy of the Project Euler's website with all the
+       problems in a single page.
+       - Creates this document automatically, computing the solved problems to
+       know the time consumed by each solution.
+       - Creates a new dir locally for each problem (new problems also),
+       downloads automatically all the necessary auxiliary files and create a
+       new python file with the problem's formulation as the document string.
 
-          This is an example of a created python file for this script:
+         This is an example of a created python file for this script:
 
-            ~~~~
+            ~~~~python
             #!/usr/bin/env python2
             # -*- coding: utf8 -*-
 
