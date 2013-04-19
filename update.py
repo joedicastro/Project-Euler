@@ -429,6 +429,8 @@ def write_readme(curr_path, times, total):
     header = '''
     # Project Euler Solutions
 
+    ![profile](http://projecteuler.net/profile/joedicastro.png)
+
     ## About Project Euler
 
     [Project Euler](http://projecteuler.net/) is a website to challenge
@@ -457,11 +459,8 @@ def write_readme(curr_path, times, total):
     - directories from `$ ls -d [0-9][0-9][0-9]`: contains the python script(s)
       with the solution and the auxiliary files needed to solve them. Sometimes
       I have more than one solution to the same problem.
-
     - `README.md`: this document
-
     - `times.json`: the time taken to solve each script stored in json format
-
     - `update.py`: an utility script to automatize some tasks:
 
       - Downloads an off-line copy of the Project Euler's website with all the
@@ -485,13 +484,12 @@ def write_readme(curr_path, times, total):
     Problem 9
     http://projecteuler.net/problem=9
 
-    A Pythagorean triplet is a set of three natural numbers, a < b < c,
-    for which, a² + b² = c²
+    A Pythagorean triplet is a set of three natural numbers, a < b < c, for
+    which, a² + b² = c²
 
     For example, 3² + 4² = 9 + 16 = 25 = 5².
 
-    There exists exactly one Pythagorean triplet for which a + b + c =
-    1000.
+    There exists exactly one Pythagorean triplet for which a + b + c = 1000.
     Find the product abc.
     """
     ```
