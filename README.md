@@ -25,24 +25,29 @@ consumed by each script below 30 second at a minimum and preferably below
 
 ### Contents:
 
-- directories `$ ls -d [0-9][0-9][0-9]`: contains the python script(s) with
-  the solution and the auxiliary files needed to solve them. Sometimes I
-  have more than one solution to the same problem.
+- directories from `$ ls -d [0-9][0-9][0-9]`: contains the python script(s)
+  with the solution and the auxiliary files needed to solve them. Sometimes
+  I have more than one solution to the same problem.
+
 - `README.md`: this document
+
 - `times.json`: the time taken to solve each script stored in json format
+
 - `update.py`: an utility script to automatize some tasks:
-- Downloads an off-line copy of the Project Euler's website with all
-  the problems in a single page.
-- Creates this document automatically, computing the solved problems to
-  know the time consumed by each solution.
-- Creates a new dir locally for each problem (new problems also),
-  downloads automatically all the necessary auxiliary files and create
-  a new python file with the problem's formulation as the document
-  string.
 
-  This is an example of a created python file for this script:
+  - Downloads an off-line copy of the Project Euler's website with all the
+   problems in a single page.
 
-~~~~
+  - Creates this document automatically, computing the solved problems to
+   know the time consumed by each solution.
+
+   - Creates a new dir locally for each problem (new problems also),
+   downloads automatically all the necessary auxiliary files and create a
+   new python file with the problem's formulation as the document string.
+
+ This is an example of a created python file for this script:
+
+```python
 #!/usr/bin/env python2
 # -*- coding: utf8 -*-
 
@@ -60,7 +65,7 @@ There exists exactly one Pythagorean triplet for which a + b + c =
 1000.
 Find the product abc.
 """
-~~~~
+```
 
 
 
