@@ -1,251 +1,314 @@
 # Project Euler Solutions
 
+## About Project Euler
+
+[Project Euler](http://projecteuler.net/) is a website to challenge
+mathematicians and programmers with mathematical problems intended to help
+you to improve your mathematical and programming skills.
+
+Extracted from [Wikipedia](http://en.wikipedia.org/wiki/Project_Euler):
+
+> Project Euler (named after Leonhard Euler) is a website dedicated to a
+series of computational problems intended to be solved with computer
+programs. The project attracts adults and students interested in
+mathematics and computer programming. It includes over 400 problems, with a
+new one added every weekend. Problems are of varying difficulty but each is
+solvable in less than a minute using an efficient algorithm on a modestly
+powered computer.
+
+## About this repository
+
+There is my attempt to solve some problems of this project, using the
+python language. The target is to solve as many as I can, and keep the time
+consumed by each script below 30 second at a minimum and preferably below
+10s.
+
+### Contents:
+
+- directories `$ ls -d [0-9][0-9][0-9]`: contains the python script(s) with
+  the solution and the auxiliary files needed to solve them. Sometimes I
+  have more than one solution to the same problem.
+- `README.md`: this document
+- `times.json`: the time taken to solve each script stored in json format
+- `update.py`: an utility script to automatize some tasks:
+- Downloads an off-line copy of the Project Euler's website with all
+  the problems in a single page.
+- Creates this document automatically, computing the solved problems to
+  know the time consumed by each solution.
+- Creates a new dir locally for each problem (new problems also),
+  downloads automatically all the necessary auxiliary files and create
+  a new python file with the problem's formulation as the document
+  string.
+
+  This is an example of a created python file for this script:
+
+~~~~
+#!/usr/bin/env python2
+# -*- coding: utf8 -*-
+
+"""
+Special Pythagorean triplet
+Problem 9
+http://projecteuler.net/problem=9
+
+A Pythagorean triplet is a set of three natural numbers, a < b < c,
+for which, a² + b² = c²
+
+For example, 3² + 4² = 9 + 16 = 25 = 5².
+
+There exists exactly one Pythagorean triplet for which a + b + c =
+1000.
+Find the product abc.
+"""
+~~~~
+
+
+
+## About Cheating
+
+Don't cheat! If you cheat, you only fool yourself! If you can't do it, you
+can not do it, that's all! Almost you tried, and if you keep learning and
+studying, maybe one day you can solve those problems that seemed so hard a
+few early.
+
+Be proud of what you have achieved instead, even if is little. Especially
+if your math skills or education is not so vast (as in my case). I'm very
+proud to have solved all of this problems without cheating or copy another
+else's solutions. That's the right attitude.
+
+But, once you have a solution, you can learn a lot from the solutions of
+others. That's the purpose of the Project Euler's forum and it's fine.
+That's the main purpose of this repository too. Maybe you couldn't learn a
+lot from my solutions, maybe even you can laugh of the most naive ones, but
+doesn't matter, be humble and remember that even the most idiot can teach
+you always something. The second purpose is to have a online backup of this
+code, some problems were hard to break and I would hate to loose this code.
+
+__The most important thing isn't the Project Euler's rank that you achieve
+or the number of problems that you solved, the most important thing is what
+you have learned in the process!__
+
+
+## Solved Problems
+
 Times computed in a Intel Core i7-3770 CPU @ 3.40GHz processor.
 
 
+Solved 46 out of 423 problems
 
- Problem 001
--------------
+### Problem 001
 
-    001.py       0.053s
-    001_1.py     0.049s
+    001.py       0.022554s ✓
 
- Problem 002
--------------
+    001_1.py     0.014849s ✓
 
-    002.py       0.050s
-    002_1.py     0.049s
+### Problem 002
 
- Problem 003
--------------
+    002.py       0.023146s ✓
 
-    003.py       0.050s
-    003_1.py     0.050s
-    003_2.py     0.058s
+    002_1.py     0.021222s ✓
 
- Problem 004
--------------
+### Problem 003
 
-    004.py       0.277s
-    004_1.py     0.053s
+    003.py       0.021620s ✓
 
- Problem 005
--------------
+    003_1.py     0.020232s ✓
 
-    005.py       5.807s
-    005_1.py     0.051s
+    003_2.py     0.028219s ✓
 
- Problem 006
--------------
+### Problem 004
 
-    006.py       0.051s
-    006_1.py     0.053s
+    004.py       0.249954s ✓
 
- Problem 007
--------------
+    004_1.py     0.023268s ✓
 
-    007.py       0.276s
-    007_1.py     0.234s
+### Problem 005
 
- Problem 008
--------------
+    005.py       5.808191s ✓
 
-    008.py       0.050s
-    008_1.py     0.052s
+    005_1.py     0.025107s ✓
 
- Problem 009
--------------
+### Problem 006
 
-    009.py       0.051s
+    006.py       0.021474s ✓
 
- Problem 010
--------------
+    006_1.py     0.020441s ✓
 
-    010.py       11.070s
-    010_1.py     0.846s
+### Problem 007
 
- Problem 011
--------------
+    007.py       0.261622s ✓
 
-    011.py       0.055s
+    007_1.py     0.208496s ✓
 
- Problem 012
--------------
+### Problem 008
 
-    012.py       8.498s
-    012_1.py     7.962s
+    008.py       0.023076s ✓
 
- Problem 013
--------------
+    008_1.py     0.021203s ✓
 
-    013.py       0.053s
+### Problem 009
 
- Problem 014
--------------
+    009.py       0.017036s ✓
 
-    014.py       24.447s
-    014_1.py     2.687s
+### Problem 010
 
- Problem 016
--------------
+    010.py       11.039828s ⚠
 
-    016.py       0.047s
+    010_1.py     0.850945s ✓
 
- Problem 017
--------------
+### Problem 011
 
-    017.py       0.051s
+    011.py       0.028042s ✓
 
- Problem 019
--------------
+### Problem 012
 
-    019.py       0.050s
+    012.py       9.322057s ✓
 
- Problem 020
--------------
+    012_1.py     8.749063s ✓
 
-    020.py       0.048s
+### Problem 013
 
- Problem 021
--------------
+    013.py       0.023989s ✓
 
-    021.py       0.188s
+### Problem 014
 
- Problem 022
--------------
+    014.py       24.668415s ⚠
 
-    022.py       0.234s
+    014_1.py     2.676699s ✓
 
- Problem 023
--------------
+### Problem 016
 
-    023.py       0.857s
+    016.py       0.028405s ✓
 
- Problem 024
--------------
+### Problem 017
 
-    024.py       0.683s
+    017.py       0.025587s ✓
 
- Problem 025
--------------
+### Problem 019
 
-    025.py       0.078s
+    019.py       0.027074s ✓
 
- Problem 026
--------------
+### Problem 020
 
-    026.py       0.304s
+    020.py       0.017099s ✓
 
- Problem 029
--------------
+### Problem 021
 
-    029.py       0.067s
+    021.py       0.158187s ✓
 
- Problem 030
--------------
+### Problem 022
 
-    030.py       1.191s
+    022.py       0.199019s ✓
 
- Problem 032
--------------
+### Problem 023
 
-    032.py       5.119s
-    032_1.py     1.143s
+    023.py       0.833783s ✓
 
- Problem 034
--------------
+### Problem 024
 
-    034.py       8.788s
-    034_1.py     2.654s
-    034_2.py     6.199s
+    024.py       0.672126s ✓
 
- Problem 035
--------------
+### Problem 025
 
-    035.py       6.869s
+    025.py       0.045723s ✓
 
- Problem 036
--------------
+### Problem 026
 
-    036.py       0.576s
+    026.py       0.273532s ✓
 
- Problem 037
--------------
+### Problem 029
 
-    037.py       0.529s
+    029.py       0.035167s ✓
 
- Problem 039
--------------
+### Problem 030
 
-    039.py       0.591s
+    030.py       1.203444s ✓
 
- Problem 040
--------------
+### Problem 032
 
-    040.py       0.241s
+    032.py       4.573121s ✓
 
- Problem 041
--------------
+    032_1.py     1.037601s ✓
 
-    041.py       0.729s
+### Problem 034
 
- Problem 042
--------------
+    034.py       9.126602s ✓
 
-    042.py       0.064s
+    034_1.py     2.713816s ✓
 
- Problem 043
--------------
+    034_2.py     6.083059s ✓
 
-    043.py       16.370s
-    043_1.py     12.015s
+### Problem 035
 
- Problem 044
--------------
+    035.py       7.120787s ✓
 
-    044.py       0.887s
+### Problem 036
 
- Problem 045
--------------
+    036.py       0.576948s ✓
 
-    045.py       0.082s
+### Problem 037
 
- Problem 048
--------------
+    037.py       0.514927s ✓
 
-    048.py       0.059s
+### Problem 039
 
- Problem 049
--------------
+    039.py       0.565841s ✓
 
-    049.py       0.057s
+### Problem 040
 
- Problem 050
--------------
+    040.py       0.203063s ✓
 
-    050.py       13.766s
+### Problem 041
 
- Problem 052
--------------
+    041.py       0.730648s ✓
 
-    052.py       0.182s
+### Problem 042
 
- Problem 053
--------------
+    042.py       0.023286s ✓
 
-    053.py       0.085s
+### Problem 043
 
- Problem 056
--------------
+    043.py       16.914430s ⚠
 
-    056.py       0.340s
+    043_1.py     12.292378s ⚠
 
- Problem 059
--------------
+### Problem 044
 
-    059.py       2.721s
+    044.py       0.849638s ✓
 
- Problem 092
--------------
+### Problem 045
 
-    092.py       0.052s
+    045.py       0.067391s ✓
+
+### Problem 048
+
+    048.py       0.032231s ✓
+
+### Problem 049
+
+    049.py       0.029477s ✓
+
+### Problem 050
+
+    050.py       13.950840s ⚠
+
+### Problem 052
+
+    052.py       0.153540s ✓
+
+### Problem 053
+
+    053.py       0.052489s ✓
+
+### Problem 056
+
+    056.py       0.306206s ✓
+
+### Problem 059
+
+    059.py       2.733520s ✓
+
+### Problem 092
+
+    092.py       0.021010s ✓
+
