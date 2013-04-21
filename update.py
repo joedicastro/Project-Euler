@@ -10,7 +10,7 @@ by each solution. Finally writes a README.md file with a summary.
 __author__ = "joe di castro <joe@joedicastro.com>"
 __license__ = "GNU General Public License version 3"
 __date__ = "21/04/2013"
-__version__ = "0.3"
+__version__ = "0.4"
 
 try:
     import json
@@ -357,7 +357,7 @@ def store_json(times, json_file):
 
     """
     with open(json_file, 'w') as json_out:
-        json.dump(times, json_out, indent=4)
+        json.dump(times, json_out, indent=4, sort_keys=True)
 
 
 def initialize_times(processor, json_file):
@@ -610,6 +610,10 @@ if __name__ == '__main__':
 ###############################################################################
 #                                  Changelog                                  #
 ###############################################################################
+#
+# 0.4:
+#
+# * Sort keys in the json file
 #
 # 0.3:
 #
