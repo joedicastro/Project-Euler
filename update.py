@@ -10,7 +10,7 @@ by each solution. Finally writes a README.md file with a summary.
 __author__ = "joe di castro <joe@joedicastro.com>"
 __license__ = "GNU General Public License version 3"
 __date__ = "21/04/2013"
-__version__ = "0.2"
+__version__ = "0.3"
 
 try:
     import json
@@ -38,7 +38,6 @@ try:
     GHOST = True
 except ImportError:
     GHOST = False
-GHOST = False
 
 
 def get_element_et_links(url):
@@ -198,19 +197,19 @@ def get_problem_formulation(problem_content, url):
 
     to_download = []
     for elm in problem_content.iter():
-        if elm.tag in ('p', 'div'):
-            if 'text-align:center' in elm.get('style', '') and elm.text:
-                elm.text = '\n'.join(u'    {0}'.format(l) for
-                                     l in elm.text.split('\n'))
+        # indented blocks of text
+        if elm.tag in ('p', 'div', 'blockquote'):
+            style = 'text-align:center' in elm.get('style', '')
+            if elm.tag == 'blockquote' or (style and elm.text):
+                elm.text = u'\n'.join(u'\t{0}'.format(l) for l in
+                                      elm.text.split('\n'))
 
-        elif elm.tag == 'sup':
-            elm.text = u''.join([superscript.get(l, u'^{0}'.format(l)) for
-                                l in elm.text])
-
-        elif elm.tag == 'sub':
-            elm.text = u''.join([subscript.get(l, u'_{0}'.format(l)) for
-                                l in elm.text])
-
+        # subscript and superscript
+        elif elm.tag in ('sub', 'sup'):
+            block = {'sub': subscript, 'sup': superscript}[elm.tag]
+            elm.text = u''.join([block.get(l, u'_{0}'.format(l)) for
+                                 l in elm.text])
+        # images
         elif elm.tag == 'img':
             alt, src = elm.get('alt'), elm.get('src').split('/')
             tail = elm.tail
@@ -219,12 +218,14 @@ def get_problem_formulation(problem_content, url):
             if src[0] == 'project':
                 to_download.append(url + '/'.join(src))
 
+        # links
         elif elm.tag == 'a':
             href = elm.get('href').split('/')
             if href[0] == 'project':
                 to_download.append(url + '/'.join(href))
             elm.text = '<{0}>'.format(elm.text)
 
+        # definitions
         elif elm.tag == 'dfn':
             elm.text = u'{0} ({1})'.format(elm.text, elm.get('title'))
 
@@ -258,10 +259,11 @@ def write_script_et_aux(content, problem_info, url):
     '''.format(problem_info['title'],
                problem_info['problem'],
                problem_info['url'],
-               problem_formulation).replace('    ', '').lstrip().encode('utf8')
+               problem_formulation
+               ).replace('    ', '').lstrip().replace('\t', '    ')
 
     with open(problem_info['file'], 'w') as output:
-        output.write(script_text)
+        output.write(script_text.encode('utf-8'))
 
     for fil in aux_files:
         filename = os.path.join(problem_info['dir'], fil.split('/')[-1])
@@ -608,6 +610,10 @@ if __name__ == '__main__':
 ###############################################################################
 #                                  Changelog                                  #
 ###############################################################################
+#
+# 0.3:
+#
+# * Parse blockquotes
 #
 # 0.2:
 #
