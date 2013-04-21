@@ -88,11 +88,10 @@ def get_web_content(element):
     return izip(titles, contents), len(titles)
 
 
-def get_problem_data(title, content, url_base, problems_path):
+def get_problem_data(title, url_base, problems_path):
     """Extract the problem's information from the web content.
 
     :title: the problem's title (lxml.html.HtmlElement)
-    :content: the problem's content (lxml.html.HtmlElement)
     :url_base: the website's url
     :problems_path: the path where the problems will be stored
     :returns: a dictionary with the problem's information
@@ -104,26 +103,9 @@ def get_problem_data(title, content, url_base, problems_path):
     problem_path = os.path.join(problems_path, problem_number)
     problem_file = os.path.join(problem_path, problem_number + '.py')
 
-    problem_formulation, aux_files = get_problem_formulation(content, url_base)
-
-    problem_text = u'''
-    #!/usr/bin/env python2
-    # -*- coding: utf8 -*-
-
-    """
-    {0}
-    {1}
-    {2}
-
-    {3}
-    """
-
-
-    '''.format(problem_title[1:], problem_et_number, problem_url,
-               problem_formulation).replace('    ', '').lstrip()
-
-    return {'dir': problem_path, 'file': problem_file, 'text': problem_text,
-            'aux': aux_files, 'number': problem_number}
+    return {'dir': problem_path, 'file': problem_file, 'url': problem_url,
+            'title': problem_title[1:], 'number': problem_number,
+            'problem': problem_et_number}
 
 
 def get_problem_formulation(problem_content, url):
@@ -242,13 +224,39 @@ def get_problem_formulation(problem_content, url):
     return problem_content.text_content().replace('\r\n', '\n'), to_download
 
 
-def download_aux_files(problem_info):
-    """Download the auxiliary files to resolve the problems.
+def write_script_et_aux(content, problem_info, url):
+    """Write the script & download the auxiliary files to resolve the problem.
 
+    :content: the problem's content
     :problem_info: problem's information dictionary
+    :url: the website's url
 
     """
-    for fil in problem_info['aux']:
+
+    problem_formulation, aux_files = get_problem_formulation(content, url)
+
+    script_text = u'''
+    #!/usr/bin/env python2
+    # -*- coding: utf8 -*-
+
+    """
+    {0}
+    {1}
+    {2}
+
+    {3}
+    """
+
+
+    '''.format(problem_info['title'],
+               problem_info['problem'],
+               problem_info['url'],
+               problem_formulation).replace('    ', '').lstrip().encode('utf8')
+
+    with open(problem_info['file'], 'w') as output:
+        output.write(script_text)
+
+    for fil in aux_files:
         filename = os.path.join(problem_info['dir'], fil.split('/')[-1])
         if not os.path.exists(filename):
             urlretrieve(fil, filename)
@@ -560,7 +568,7 @@ def main(changes=False):
     git_staged = scripts_per_problem(get_git_files(current_path, True))
 
     for title, content in web_content:
-        problem_data = get_problem_data(title, content, domain, current_path)
+        problem_data = get_problem_data(title, domain, current_path)
 
         if not os.path.exists(problem_data['dir']):
             os.mkdir(problem_data['dir'])
@@ -572,10 +580,7 @@ def main(changes=False):
                 get_times(git_staged, problem_data, times)
 
         if not os.path.exists(problem_data['file']):
-            with open(problem_data['file'], 'w') as output:
-                output.write(problem_data['text'].encode('utf-8'))
-
-            download_aux_files(problem_data)
+            write_script_et_aux(content, problem_data, domain)
 
     store_json(times, json_times)
     write_readme(current_path, times, problems_count)
