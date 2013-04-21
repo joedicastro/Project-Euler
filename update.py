@@ -9,8 +9,8 @@ by each solution. Finally writes a README.md file with a summary.
 
 __author__ = "joe di castro <joe@joedicastro.com>"
 __license__ = "GNU General Public License version 3"
-__date__ = "18/04/2013"
-__version__ = "0.1"
+__date__ = "21/04/2013"
+__version__ = "0.2"
 
 try:
     import json
@@ -38,6 +38,7 @@ try:
     GHOST = True
 except ImportError:
     GHOST = False
+GHOST = False
 
 
 def get_element_et_links(url):
@@ -217,6 +218,12 @@ def get_problem_formulation(problem_content, url):
             elm.text, elm.tail = src[-1] if src[0] == 'project' else alt, tail
             if src[0] == 'project':
                 to_download.append(url + '/'.join(src))
+
+        elif elm.tag == 'a':
+            href = elm.get('href').split('/')
+            if href[0] == 'project':
+                to_download.append(url + '/'.join(href))
+            elm.text = '<{0}>'.format(elm.text)
 
         elif elm.tag == 'dfn':
             elm.text = u'{0} ({1})'.format(elm.text, elm.get('title'))
@@ -601,6 +608,10 @@ if __name__ == '__main__':
 ###############################################################################
 #                                  Changelog                                  #
 ###############################################################################
+#
+# 0.2:
+#
+# * Download also the non-image auxiliary files
 #
 # 0.1:
 #
