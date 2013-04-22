@@ -223,7 +223,7 @@ def get_problem_formulation(problem_content, url):
             href = elm.get('href').split('/')
             if href[0] == 'project':
                 to_download.append(url + '/'.join(href))
-            elm.text = '<{0}>'.format(elm.text)
+                elm.text = '<{0}>'.format(elm.text)
 
         # definitions
         elif elm.tag == 'dfn':
