@@ -231,6 +231,8 @@ Solved 51 out of 424 problems
 
     027.py       3.228487s ✓
 
+    027_1.py     1.219820s ✓
+
 ### Problem 028
 
     028.py       0.024141s ✓
