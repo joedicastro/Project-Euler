@@ -321,6 +321,8 @@ Solved 55 out of 425 problems
 
     047_2.py     8.752145s ✓
 
+    047_3.py     0.116513s ✓
+
 ### Problem 048
 
     048.py       0.032231s ✓
