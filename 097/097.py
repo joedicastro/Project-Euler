@@ -20,4 +20,4 @@ Find the last ten digits of this prime number.
 
 prime = (28433 * 2 ** 7830457) + 1
 
-print divmod(prime, 10000000000)[1]
+print divmod(prime, 10 ** 10)[1]
