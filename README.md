@@ -363,6 +363,8 @@ Solved 63 out of 426 problems
 
     058.py       28.746523s ⚠
 
+    058_1.py     6.593587s ✓
+
 ### Problem 059
 
     059.py       2.733520s ✓
