@@ -97,7 +97,7 @@ you have learned in the process!__
 Times computed in a Intel Core i7-3770 CPU @ 3.40GHz processor.
 
 
-Solved 63 out of 426 problems
+Solved 64 out of 426 problems
 
 ### Problem 001
 
@@ -368,6 +368,10 @@ Solved 63 out of 426 problems
 ### Problem 059
 
     059.py       2.733520s ✓
+
+### Problem 061
+
+    061.py       0.292618s ✓
 
 ### Problem 062
 
