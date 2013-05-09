@@ -39,11 +39,13 @@ with more digits than denominator?
 # num / den → (2 x den) + num / num  + den
 
 
+from math import log10
+
 total = 0
 nume, deno = 3, 2
 
 for i in xrange(1000):
-    if len(str(nume)) > len(str(deno)):
+    if int(log10(nume)) > int(log10(deno)):
         total += 1
     nume, deno = (2 * deno) + nume, nume + deno
 
