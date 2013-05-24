@@ -20,7 +20,7 @@ powered computer.
 
 ## About this repository
 
-There is my attempt to solve some problems of this project, using the
+This is my attempt to solve some problems of this project, using the
 python language. The target is to solve as many as I can, and keep the time
 consumed by each script below 30 second at a minimum and preferably below
 10s.
